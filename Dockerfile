@@ -1,4 +1,4 @@
-FROM ubuntu:precise
+FROM ubuntu:trusty
 MAINTAINER Matthew Landauer <matthew@oaf.org.au>
 
 RUN apt-get update
