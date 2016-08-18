@@ -25,8 +25,8 @@ RUN apt-get update
 #RUN apt-get install -y postgresql postgis
 
 ADD https://raw.github.com/mysociety/commonlib/master/bin/install-site.sh /install-site.sh
-#RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
-RUN /bin/bash /install-site.sh --default mapit mapit localhost
+RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
+#RUN /bin/bash /install-site.sh --default mapit mapit localhost
 RUN rm /install-site.sh
 
 # Install Supervisor to manage multiple processes running in the docker container
