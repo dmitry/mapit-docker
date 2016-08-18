@@ -16,8 +16,12 @@ ENV LC_ALL en_GB.UTF-8
 #RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 #RUN apt-get install -y libgdal-dev  memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
+RUN echo "deb http://ppa.launchpad.net/ubuntugis/ppa/ubuntu trusty main" >> /etc/apt/sources.list.d/postgis.list
+RUN apt-get update
+
+
 # We install postgres now so that it can be running when the install script is used
-RUN apt-get install -y postgresql postgresql-9.1-postgis
+RUN apt-get install -y postgresql postgis
 
 ADD https://raw.github.com/mysociety/commonlib/master/bin/install-site.sh /install-site.sh
 RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
