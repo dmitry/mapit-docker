@@ -17,7 +17,6 @@ ENV LC_ALL en_GB.UTF-8
 #RUN apt-get install -y libgdal-dev  memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
 RUN echo "deb http://ppa.launchpad.net/ubuntugis/ppa/ubuntu trusty main" >> /etc/apt/sources.list.d/postgis.list
-RUN sudo apt-key add 
 RUN apt-get update
 
 
