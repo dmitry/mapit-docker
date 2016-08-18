@@ -23,7 +23,7 @@ RUN apt-get update
 
 
 # We install postgres now so that it can be running when the install script is used
-RUN apt-get install -y postgresql-9.4 postgis
+RUN apt-get install -y postgresql-9.4 postgresql-9.4-postgis-2.1
 
 ADD https://raw.github.com/mysociety/commonlib/master/bin/install-site.sh /install-site.sh
 RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
