@@ -14,7 +14,7 @@ ENV LC_ALL en_GB.UTF-8
 # caching while debugging this Dockerfile. So, it should be able to comment
 # out this section when everything is working
 RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
-RUN apt-get install -y libgdal1-1.7.0 memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
+RUN apt-get install -y libgdal-dev  memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql postgresql-9.1-postgis
