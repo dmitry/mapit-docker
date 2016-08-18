@@ -13,8 +13,8 @@ ENV LC_ALL en_GB.UTF-8
 # but we're installing them first here so that we can take advantage of docker
 # caching while debugging this Dockerfile. So, it should be able to comment
 # out this section when everything is working
-#RUN apt-get install -y git-core lockfile-progs rubygems curl dnsutils lsb-release
-#RUN apt-get install -y libgdal1-1.7.0 memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
+RUN apt-get install -y git-core lockfile-progs rubygems curl dnsutils lsb-release
+RUN apt-get install -y libgdal1-1.7.0 memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql postgresql-9.1-postgis
@@ -31,9 +31,9 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 # Permissions seem to be wrong on postgres server.key after building on docker hub
 # This is also possibly related to https://github.com/dotcloud/docker/issues/783
 # TODO Investigate this further rather than working around
-#RUN rm /var/lib/postgresql/9.1/main/server.key
-#RUN cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.1/main/server.key
-#RUN chown postgres:postgres /var/lib/postgresql/9.1/main/server.key
+RUN rm /var/lib/postgresql/9.1/main/server.key
+RUN cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.1/main/server.key
+RUN chown postgres:postgres /var/lib/postgresql/9.1/main/server.key
 
 # See this: https://code.djangoproject.com/ticket/16778
 RUN echo "standard_conforming_strings = off" >> /etc/postgresql/9.1/main/postgresql.conf
