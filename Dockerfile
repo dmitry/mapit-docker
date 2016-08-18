@@ -6,6 +6,7 @@ RUN apt-get upgrade -y
 
 # Set the locale so that postgres is setup with the correct locale
 RUN apt-get install -y language-pack-en software-properties-common
+RUN apt-get install --reinstall ca-certificates
 ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 
