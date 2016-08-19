@@ -25,9 +25,7 @@ RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-ser
 ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
 COPY ./create_template_postgis-debian.sh /create_template_postgis-debian.sh
 RUN /create_template_postgis-debian.sh
-
-
-RUN service postgresql start && su postgres -c "createdb template_postgis" && su postgres -c "createlang plpgsql template_postgis" && su postgres -c "psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.1/postgis.sql" && su postgres -c "psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.1/spatial_ref_sys.sql"; /bin/bash /install-site.sh --default mapit mapit localhost
+RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
 #RUN /bin/bash /install-site.sh --default mapit mapit localhost
 RUN rm /install-site.sh
 
