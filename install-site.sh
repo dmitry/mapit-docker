@@ -210,15 +210,15 @@ generate_locales() {
     echo "Generating locales... "
     # If language-pack-en is present, install that:
     apt-get -qq install -y language-pack-en >/dev/null || true
-    add_locale en_GB
+    add_locale en_US
     echo $DONE_MSG
 }
 
 set_locale() {
-    echo 'LANG="en_GB.UTF-8"' > /etc/default/locale
-    echo 'LC_ALL="en_GB.UTF-8"' >> /etc/default/locale
-    export LANG="en_GB.UTF-8"
-    export LC_ALL="en_GB.UTF-8"
+    echo 'LANG="en_US.UTF-8"' > /etc/default/locale
+    echo 'LC_ALL="en_US.UTF-8"' >> /etc/default/locale
+    export LANG="en_US.UTF-8"
+    export LC_ALL="en_US.UTF-8"
 }
 
 add_unix_user() {
@@ -311,7 +311,7 @@ update_mysociety_apt_sources() {
     echo -n "Updating mySociety APT source... "
 
     cat > /etc/apt/sources.list.d/mysociety-debian.list <<EOF
-deb http://debian.mysociety.org squeeze main
+deb http://debian.mysociety.org jessie main
 EOF
 
     if [ x"$DISTRIBUTION" = x"debian" ] && [ x"$DISTVERSION" = x"wheezy" ]
