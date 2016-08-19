@@ -47,12 +47,12 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 # Permissions seem to be wrong on postgres server.key after building on docker hub
 # This is also possibly related to https://github.com/dotcloud/docker/issues/783
 # TODO Investigate this further rather than working around
-#RUN rm /var/lib/postgresql/9.1/main/server.key
-#RUN cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.1/main/server.key
-#RUN chown postgres:postgres /var/lib/postgresql/9.1/main/server.key
+RUN rm /var/lib/postgresql/9.4/main/server.key
+RUN cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.4/main/server.key
+RUN chown postgres:postgres /var/lib/postgresql/9.4/main/server.key
 
 # See this: https://code.djangoproject.com/ticket/16778
-RUN echo "standard_conforming_strings = off" >> /etc/postgresql/9.1/main/postgresql.conf
+RUN echo "standard_conforming_strings = off" >> /etc/postgresql/9.4/main/postgresql.conf
 # Curious. Expected Shapely to be installed earlier
 RUN pip install Shapely
 # Turn debug off so we don't run out of memory during imports
