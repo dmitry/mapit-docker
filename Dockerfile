@@ -24,7 +24,8 @@ ENV LC_ALL en_US.UTF-8
 # out this section when everything is working
 #RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 # We install postgres now so that it can be running when the install script is used
-RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-server-dev-9.4 python-psycopg2 python-pip
+#RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-server-dev-9.4 python-psycopg2 python-pip
+RUN apt-get install -y postgresql-9.4 postgresql-server-dev-9.4 python-psycopg2 python-pip
 #RUN pip install django-mapit
 #RUN apt-get install -y memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
