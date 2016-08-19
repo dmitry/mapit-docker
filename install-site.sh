@@ -166,7 +166,7 @@ echo "$HOST" > "$OLD_HOST_FILE"
 REPOSITORY="$DIRECTORY/$SITE"
 
 REPOSITORY_URL=git://github.com/mysociety/$SITE.git
-BRANCH=v1.4
+BRANCH=master
 
 DISTRIBUTION="$(lsb_release -i -s  | tr A-Z a-z)"
 DISTVERSION="$(lsb_release -c -s)"
@@ -423,8 +423,8 @@ install_postgis() {
         echo "PostGIS support should already be available."
     else
         echo -n "Installing PostGIS... "
-        POSTGIS_SCRIPT='https://docs.djangoproject.com/en/1.7/_downloads/create_template_postgis-debian.sh'
-        su -l -c "curl '$POSTGIS_SCRIPT' | bash -s" postgres
+        #POSTGIS_SCRIPT='https://docs.djangoproject.com/en/1.7/_downloads/create_template_postgis-debian.sh'
+        #su -l -c "curl '$POSTGIS_SCRIPT' | bash -s" postgres
         # According to Matthew's installation instructions, these two SRID
         # may be missing the appropriate +datum from the proj4text column,
         # depending on what PostGIS version is being used.  Check whether
