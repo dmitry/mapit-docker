@@ -20,7 +20,7 @@ ENV LC_ALL en_GB.UTF-8
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql-9.3 postgresql-9.3-postgis-2.1
 
-ADD https://raw.github.com/mysociety/commonlib/master/bin/install-site.sh /install-site.sh
+ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
 RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
 #RUN /bin/bash /install-site.sh --default mapit mapit localhost
 RUN rm /install-site.sh
