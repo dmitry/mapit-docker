@@ -1,6 +1,13 @@
 FROM debian:jessie
 MAINTAINER Matthew Landauer <matthew@oaf.org.au>
 
+RUN echo \
+   'deb ftp://ftp.us.debian.org/debian/ jessie main\n \
+    deb ftp://ftp.us.debian.org/debian/ jessie-updates main\n \
+    deb http://security.debian.org jessie/updates main\n' \
+    > /etc/apt/sources.list
+
+
 RUN apt-get update
 RUN apt-get upgrade -y
 
