@@ -15,7 +15,7 @@ ENV LC_ALL en_GB.UTF-8
 # out this section when everything is working
 RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 # We install postgres now so that it can be running when the install script is used
-RUN apt-get install -y postgresql-9.3  postgresql-9.3-postgis-2.1 postgresql-server-dev-9.3 python-psycopg2 python-pip
+RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-server-dev-9.4 python-psycopg2 python-pip
 
 RUN apt-get install binutils libproj-dev gdal-bin
 RUN curl wget http://download.osgeo.org/geos/geos-3.4.2.tar.bz2 && tar xjf geos-3.4.2.tar.bz2 && cd geos-3.4.2 && ./configure && make && make install && cd ..
