@@ -8,9 +8,7 @@ then
     GEOGRAPHY=1
 fi
 
-pg_dropcluster --stop 9.4 main
-pg_createcluster --locale=en_US.utf8 --start 9.4 main
-createdb -E UTF8 template_postgis && \
+createdb --template=template0 -E UTF8 template_postgis && \
 ( createlang -d template_postgis -l | grep plpgsql || createlang -d template_postgis plpgsql ) && \
 psql -d postgres -c "UPDATE pg_database SET datistemplate='true' WHERE datname='template_postgis';" && \
 psql -d template_postgis -f $POSTGIS_SQL_PATH/$POSTGIS_SQL && \
