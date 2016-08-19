@@ -234,7 +234,7 @@ add_unix_user() {
 }
 
 add_postgresql_user() {
-    SUPERUSER=${1:---no-createrole --no-superuser}
+    SUPERUSER=${1:---no-createrole --superuser}
     su -l -c "createuser --createdb $SUPERUSER '$UNIX_USER'" postgres || true
 }
 
