@@ -17,7 +17,7 @@ RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-server-dev-9.4 python-psycopg2 python-pip
 
-RUN apt-get install binutils libproj-dev gdal-bin
+RUN apt-get install -y binutils libproj-dev gdal-bin
 RUN curl wget http://download.osgeo.org/geos/geos-3.4.2.tar.bz2 && tar xjf geos-3.4.2.tar.bz2 && cd geos-3.4.2 && ./configure && make && make install && cd ..
 RUN wget http://download.osgeo.org/proj/proj-4.9.1.tar.gz && wget http://download.osgeo.org/proj/proj-datumgrid-1.5.tar.gz && tar xzf proj-4.9.1.tar.gz && cd proj-4.9.1/nad && tar xzf ../../proj-datumgrid-1.5.tar.gz && cd .. && ./configure && make && make install && cd ..
 RUN wget http://download.osgeo.org/gdal/1.11.2/gdal-1.11.2.tar.gz && tar xzf gdal-1.11.2.tar.gz && cd gdal-1.11.2 && ./configure --with-python && make && make install && cd ..
@@ -25,7 +25,7 @@ RUN wget http://download.osgeo.org/postgis/source/postgis-2.1.5.tar.gz && tar xz
 ENV LD_LIBRARY_PATH=/usr/local/lib
 RUN echo /usr/local/lib >> /etc/ld.so.conf && ldconfig
 RUN pip install Django
-RUN apt-get install python-gdal ruby-sass
+RUN apt-get install -y python-gdal ruby-sass
 #RUN pip install django-mapit
 #RUN apt-get install -y memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
