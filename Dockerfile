@@ -6,6 +6,7 @@ RUN apt-get upgrade -y
 
 # Set the locale so that postgres is setup with the correct locale
 #RUN apt-get install -y language-pack-en
+RUN locale-gen "en_US.UTF-8"
 ENV LANG en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 
@@ -13,15 +14,16 @@ ENV LC_ALL en_GB.UTF-8
 # but we're installing them first here so that we can take advantage of docker
 # caching while debugging this Dockerfile. So, it should be able to comment
 # out this section when everything is working
-RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
+#RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-server-dev-9.4 python-psycopg2 python-pip
 #RUN pip install django-mapit
 #RUN apt-get install -y memcached python-virtualenv python-django python-django-south python-psycopg2 python-yaml python-memcache python-gdal python-beautifulsoup ruby-sass
 
 
+
 ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
-RUN service postgresql start; /bin/bash /install-site.sh --default mapit mapit localhost
+RUN service postgresql start && su postgres -C "createdb template_postgis" && su postgres -C "createlang plpgsql template_postgis" && su postgres -C "psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.1/postgis.sql" && su postgres -C "psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.1/spatial_ref_sys.sql"; /bin/bash /install-site.sh --default mapit mapit localhost
 #RUN /bin/bash /install-site.sh --default mapit mapit localhost
 RUN rm /install-site.sh
 
