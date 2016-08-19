@@ -23,7 +23,7 @@ RUN apt-get install -y postgresql-9.4  postgresql-9.4-postgis-2.1 postgresql-ser
 
 
 ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
-RUN ls -la /usr/share/postgresql/9.4/contrib/
+RUN ls -la /usr/share/postgresql/9.4/contrib/postgis-2.1
 RUN echo -e "----------------------\n"
 RUN echo -e "----------------------\n"
 RUN echo -e "----------------------\n"
