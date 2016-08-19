@@ -12,7 +12,8 @@ RUN apt-get upgrade -y
 
 # Set the locale so that postgres is setup with the correct locale
 #RUN apt-get install -y language-pack-en
-RUN apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
+#RUN apt-get update && apt-get install -y locales && locale-gen en_US.UTF-8
+RUN apt-get update && apt-get install -y locales && localedef -i en_US -f UTF-8 en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
