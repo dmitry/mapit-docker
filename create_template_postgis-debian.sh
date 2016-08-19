@@ -2,9 +2,9 @@
 
 GEOGRAPHY=0
 POSTGIS_SQL=postgis.sql
-if [ -d "/usr/share/postgresql/9.4/contrib/postgis-1.5" ]
+if [ -d "/usr/share/postgresql/9.4/contrib/postgis-2.1" ]
 then
-    POSTGIS_SQL_PATH=/usr/share/postgresql/9.1/contrib/postgis-2.1
+    POSTGIS_SQL_PATH=/usr/share/postgresql/9.4/contrib/postgis-2.1
     GEOGRAPHY=1
 fi
 
