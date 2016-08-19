@@ -429,18 +429,18 @@ install_postgis() {
         # may be missing the appropriate +datum from the proj4text column,
         # depending on what PostGIS version is being used.  Check whether
         # they are missing, and if so, update the column.
-        #for T in 27700:+datum=OSGB36 29902:+datum=ire65
-        #do
-        #    SRID="${T%%:*}"
-        #    DATUM="${T##*:}"
-        #    EXISTING="$(echo "select proj4text from spatial_ref_sys where srid = '$SRID'" | su -l -c "psql -t -P 'format=unaligned' template_postgis" postgres)"
-        #    if ! echo "$EXISTING" | grep -- "$DATUM"
-        #    then
-        #        echo Adding $DATUM to the proj4text column of spatial_ref_sys for srid $SRID
-        #        NEW_VALUE="${EXISTING% } $DATUM "
-        #        echo "UPDATE spatial_ref_sys SET proj4text = '$NEW_VALUE' WHERE srid = '$SRID'" | su -l -c 'psql template_postgis' postgres
-        #    fi
-        #done
+        for T in 27700:+datum=OSGB36 29902:+datum=ire65
+        do
+            SRID="${T%%:*}"
+            DATUM="${T##*:}"
+            EXISTING="$(echo "select proj4text from spatial_ref_sys where srid = '$SRID'" | su -l -c "psql -t -P 'format=unaligned' template_postgis" postgres)"
+            if ! echo "$EXISTING" | grep -- "$DATUM"
+            then
+                echo Adding $DATUM to the proj4text column of spatial_ref_sys for srid $SRID
+                NEW_VALUE="${EXISTING% } $DATUM "
+                echo "UPDATE spatial_ref_sys SET proj4text = '$NEW_VALUE' WHERE srid = '$SRID'" | su -l -c 'psql template_postgis' postgres
+            fi
+        done
         echo $DONE_MSG
     fi
 }
