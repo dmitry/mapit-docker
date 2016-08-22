@@ -14,7 +14,7 @@ ENV LC_ALL en_GB.UTF-8
 RUN apt-get install -y postgresql-9.4 postgresql-server-dev-9.4
 
 ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
-RUN service postgresql restart; chmod +x /install-site.sh && /bin/bash /install-site.sh --default mapit mapit localhost
+RUN service postgresql restart; chmod +x /install-site.sh && /bin/sh /install-site.sh --default mapit mapit mapit.127.0.0.1.nip.io
 RUN rm /install-site.sh
 
 # Install Supervisor to manage multiple processes running in the docker container
