@@ -25,11 +25,8 @@ ENV LC_ALL en_US.UTF-8
 #RUN apt-get install -y git-core lockfile-progs ruby curl dnsutils lsb-release
 # We install postgres now so that it can be running when the install script is used
 RUN apt-get install -y postgresql-9.4 postgresql-server-dev-9.4 python-psycopg2 python-pip
-COPY ./create_template_postgis-debian.sh /create_template_postgis-debian.sh
-RUN chmod +x /create_template_postgis-debian.sh && service postgresql start; su -l -c "bash /create_template_postgis-debian.sh" postgres
 
-#ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
-COPY ./install-site.sh /install-site.sh
+ADD https://github.com/mysociety/commonlib/raw/master/bin/install-site.sh /install-site.sh
 RUN service postgresql restart; chmod +x /install-site.sh && /bin/bash /install-site.sh --default mapit mapit localhost
 RUN rm /install-site.sh
 
