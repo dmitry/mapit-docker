@@ -17,6 +17,7 @@ Execute `curl http://${docker inspect --format '{{.NetworkSettings.IPAddress}}' 
 
 ```
 sudo docker exec -i -t {CONTAINER_ID} /bin/bash
+export TERM=xterm
 ```
 
 And install:
