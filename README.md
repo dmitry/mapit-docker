@@ -14,3 +14,11 @@ docker run --link overpass-api:0.7.55 -d mapit:global
 ```
 
 Execute `curl http://{IP}/point/4326/-16.5450,28.4114`
+
+```
+sudo docker exec -i -t {CONTAINER_ID} /bin/bash
+```
+
+And install:
+
+http://mapit.poplus.org/docs/self-hosted/import/global/
