@@ -10,7 +10,7 @@ First, you'll need to install [Docker](https://docs.docker.com/) if you don't al
 Then,
 ```
 docker build -t mapit:global .
-docker run --link overpass-api:0.7.55 -d mapit:global
+docker run --link overpass_container_id:overpass -d mapit:global
 ```
 
 Execute `curl http://${docker inspect --format '{{.NetworkSettings.IPAddress}}' $CONTAINER_ID}/point/4326/-16.5450,28.4114`
